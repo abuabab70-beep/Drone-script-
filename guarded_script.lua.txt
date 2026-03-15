@@ -1,0 +1,86 @@
+--[[ Protected by Lua Guard ]]
+
+( function (...) local Players = game:GetService("\080\108\097\121\101\114\115") local RunService = game:GetService("\082\117\110\083\101\114\118\105\099\101") local GuiService = game:GetService("\071\117\105\083\101\114\118\105\099\101") local StarterGui = game:GetService("\083\116\097\114\116\101\114\071\117\105") local UserInputService = game:GetService("\085\115\101\114\073\110\112\117\116\083\101\114\118\105\099\101") local _lIlIIIllII = Players.LocalPlayer local _IlllIIIlll = workspace.CurrentCamera local _IlIIIIIIlI = _lIlIIIllII:WaitForChild("\080\108\097\121\101\114\071\117\105") local _lllIlIlllI = false local _IIllIIllIl = 0x2 local _IllIIlIIll = 0.15 local _llIlllllll = Vector3.zero local _llIlIlIlll = Vector2.zero local _llIlIlIllI = Vector2.zero local _IIIlIllIlI = nil local _llllIIllIl = nil local _IllIIlIllI = { _lIIllIlIII = nil, _lIlIllIIIl = nil, _lllllllIII = nil, _IlIIlIllll = nil, Flashlight = nil } local _IIIIlIIIlI = false local _lIIlIIIllI = nil local _llllIllIIl = nil local _IlIlllIllI = 0x2 local _llIIllIIII = 0.1 local _lllIlIllll = 0x3 local _IllIlIIlII = { X = 0x0, Z = 0x0 } pcall( function () StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.TouchControls, true) end
+ ) local function _IlllllllII() local _IIlIIlllll = _IlllIIIlll.ViewportSize local _IIlIllllII = math.min(_IIlIIlllll.X, _IIlIIlllll.Y) return math.clamp(_IIlIllllII / 0x2D0, 0.6, 1.6) end
+ if _IlIIIIIIlI:FindFirstChild("\070\114\101\101\099\097\109\083\121\115\116\101\109") then _IlIIIIIIlI.FreecamSystem:Destroy() end
+ local _IIIllIllIl = Instance.new("\083\099\114\101\101\110\071\117\105") _IIIllIllIl.Name = "\070\114\101\101\099\097\109\083\121\115\116\101\109" _IIIllIllIl.ResetOnSpawn = false _IIIllIllIl.IgnoreGuiInset = true _IIIllIllIl.Parent = _IlIIIIIIlI local _lIlIlIIlIl = Instance.new("\073\109\097\103\101\066\117\116\116\111\110") _lIlIlIIlIl.BackgroundTransparency = 0x1 _lIlIlIIlIl.Image = "\114\098\120\097\115\115\101\116\105\100\058\047\047\049\054\056\048\051\056\048\050\050\054\055" _lIlIlIIlIl.ZIndex = 0xA _lIlIlIIlIl.Parent = _IIIllIllIl local _IIllllllIl = Instance.new("\073\109\097\103\101\076\097\098\101\108") _IIllllllIl.Size = UDim2.new(0.6,0x0,0.6,0x0) _IIllllllIl.Position = UDim2.new(0.2,0x0,0.2,0x0) _IIllllllIl.BackgroundTransparency = 0x1 _IIllllllIl.Image = "\114\098\120\097\115\115\101\116\105\100\058\047\047\049\050\055\049\052\055\052\057\052\057\051\053\055\048\054" _IIllllllIl.ZIndex = 0xB _IIllllllIl.ImageTransparency = 0.6 _IIllllllIl.Parent = _lIlIlIIlIl local _llIIlllIIl = Instance.new("\083\099\114\101\101\110\071\117\105") _llIIlllIIl.Name = "\070\114\101\101\099\097\109\067\111\110\116\114\111\108\115" _llIIlllIIl.ResetOnSpawn = false _llIIlllIIl.IgnoreGuiInset = true _llIIlllIIl.Parent = _IlIIIIIIlI _llIIlllIIl.Enabled = false local _IlllIlIlll = Instance.new("\070\114\097\109\101") _IlllIlIlll.BackgroundTransparency = 0x1 _IlllIlIlll.Parent = _llIIlllIIl local _IIIIlIllII = "\114\098\120\097\115\115\101\116\105\100\058\047\047\049\054\056\049\048\049\051\050\053\052\050" local _lllllllIIl = "\114\098\120\097\115\115\101\116\105\100\058\047\047\049\054\056\049\048\049\049\056\052\057\055" local function _IIIllIIlIl(pos) local _IIIllIllII = _IlIIIIIIlI:GetGuiObjectsAtPosition(pos.X, pos.Y) for _, obj in ipairs(_IIIllIllII) do if obj:IsDescendantOf(_IlllIlIlll) or obj == _lIlIlIIlIl or obj == _IIllllllIl then return true end
+ end
+ return false end
+ local function _IIIllIlllI(name, rotationValue) local _lIlIllIIll = Instance.new("\073\109\097\103\101\066\117\116\116\111\110") _lIlIllIIll.Name = name _lIlIllIIll.BackgroundTransparency = 0x1 _lIlIllIIll.AutoButtonColor = false _lIlIllIIll.Parent = _IlllIlIlll local _IlllIIlllI = Instance.new("\073\109\097\103\101\076\097\098\101\108") _IlllIIlllI.Size = UDim2.new(0.8,0x0,0.8,0x0) _IlllIIlllI.Position = UDim2.new(0.1,0x0,0.1,0x0) _IlllIIlllI.BackgroundTransparency = 0x1 _IlllIIlllI.Image = _IIIIlIllII _IlllIIlllI.Rotation = rotationValue _IlllIIlllI.Parent = _lIlIllIIll _lIlIllIIll:SetAttribute("\065\120\105\115", name == "\076\101\102\116" or name == "\082\105\103\104\116" and "\088" or "\090") _lIlIllIIll:SetAttribute("\086\097\108\117\101", (name == "\082\105\103\104\116" or name == "\066\097\099\107\119\097\114\100") and 0x1 or -0x1) if name == "\076\101\102\116" then _lIlIllIIll:SetAttribute("\086\097\108\117\101", -0x1) end
+ if name == "\082\105\103\104\116" then _lIlIllIIll:SetAttribute("\086\097\108\117\101", 0x1) end
+ if name == "\070\111\114\119\097\114\100" then _lIlIllIIll:SetAttribute("\086\097\108\117\101", -0x1) end
+ if name == "\066\097\099\107\119\097\114\100" then _lIlIllIIll:SetAttribute("\086\097\108\117\101", 0x1) end
+ return _lIlIllIIll, _IlllIIlllI end
+ local _lIIllIlIII, ForwardArrow = _IIIllIlllI("\070\111\114\119\097\114\100",0x0) local _lIlIllIIIl, BackwardArrow = _IIIllIlllI("\066\097\099\107\119\097\114\100",0xB4) local _lllllllIII, LeftArrow = _IIIllIlllI("\076\101\102\116",-0x5A) local _IlIIlIllll, RightArrow = _IIIllIlllI("\082\105\103\104\116",0x5A) local _lllllIlIll = Instance.new("\084\101\120\116\066\117\116\116\111\110") _lllllIlIll.Name = "\070\108\097\115\104\108\105\103\104\116" _lllllIlIll.BackgroundColor3 = Color3.fromRGB(0x28, 0x28, 0x28) _lllllIlIll.BackgroundTransparency = 0.3 _lllllIlIll.Text = "\55357\56614" _lllllIlIll.TextColor3 = Color3.fromRGB(0xFF, 0xFF, 0xFF) _lllllIlIll.TextScaled = true _lllllIlIll.TextStrokeTransparency = 0.5 _lllllIlIll.Parent = _IlllIlIlll local _IIlIlllIlI = Instance.new("\085\073\067\111\114\110\101\114") _IIlIlllIlI.CornerRadius = UDim.new(0.5, 0x0) _IIlIlllIlI.Parent = _lllllIlIll local _IlIIlIIllI = { [_lIIllIlIII] = {axis = "\090", value = -0x1, _IlllIIlllI = ForwardArrow}, [_lIlIllIIIl] = {axis = "\090", value = 0x1, _IlllIIlllI = BackwardArrow}, [_lllllllIII] = {axis = "\088", value = -0x1, _IlllIIlllI = LeftArrow}, [_IlIIlIllll] = {axis = "\088", value = 0x1, _IlllIIlllI = RightArrow}, [_lllllIlIll] = {isFlashlight = true} } local function _lllIlIIlll() local _lIIllIIIlI = Instance.new("\065\116\116\097\099\104\109\101\110\116") _lIIllIIIlI.Name = "\070\108\097\115\104\108\105\103\104\116\065\116\116\097\099\104\109\101\110\116" _lIIllIIIlI.WorldPosition = _IlllIIIlll.CFrame.Position _lIIllIIIlI.Parent = workspace.Terrain local _IIIlllIlII = Instance.new("\083\112\111\116\076\105\103\104\116") _IIIlllIlII.Name = "\070\114\101\101\099\097\109\070\108\097\115\104\108\105\103\104\116" _IIIlllIlII.Brightness = 0x8 _IIIlllIlII.Color = Color3.fromRGB(0xFF, 0xF8, 0xDC) _IIIlllIlII.Range = 0x78 _IIIlllIlII.Angle = 0x50 _IIIlllIlII.Shadows = true _IIIlllIlII.Parent = _lIIllIIIlI return _lIIllIIIlI, _IIIlllIlII end
+ local function _llllllIIII() if _lIIlIIIllI then _lIIlIIIllI:Destroy() _lIIlIIIllI = nil end
+ _llllIllIIl = nil end
+ local function _lllIlllIIl() _IIIIlIIIlI = not _IIIIlIIIlI if _IIIIlIIIlI then _lIIlIIIllI, _llllIllIIl = _lllIlIIlll() _lllllIlIll.BackgroundColor3 = Color3.fromRGB(0xFF, 0xC8, 0x64) _lllllIlIll.Text = "\55357\56481" else _llllllIIII() _lllllIlIll.BackgroundColor3 = Color3.fromRGB(0x28, 0x28, 0x28) _lllllIlIll.Text = "\55357\56614" end
+ end
+ local function _llllIIIllI() if not _IIIIlIIIlI or not _lIIlIIIllI or not _llllIllIIl then return end
+ _lIIlIIIllI.WorldPosition = _IlllIIIlll.CFrame.Position local _IlIlllIllI = _IlllIIIlll.CFrame.LookVector _lIIlIIIllI.WorldCFrame = CFrame.lookAt(_lIIlIIIllI.WorldPosition, _lIIlIIIllI.WorldPosition + _IlIlllIllI) end
+ local function _llIIlllIll() local _IIIIIlIlIl = _IlllllllII() local _IIIIlllIlI = 0x190 * _IIIIIlIlIl local _llIIllIlII = 0xA0 * _IIIIIlIlIl local _lllllIIIll = 0x46 * _IIIIIlIlIl local _IIllIIIIII = 0x64 * _IIIIIlIlIl _IlllIlIlll.Size = UDim2.new(0x0,_IIIIlllIlI,0x0,_IIIIlllIlI) if GuiService:IsTenFootInterface() then _IlllIlIlll.Position = UDim2.new(0.04,0x0,0.35,0x0) else _IlllIlIlll.Position = UDim2.new(0.02,0x0,0.38,0x0) end
+ _lIlIlIIlIl.Size = UDim2.new(0x0,_lllllIIIll,0x0,_lllllIIIll) _lIlIlIIlIl.Position = UDim2.new(0x1,-(_lllllIIIll+0x14),0x0,0x6E * _IIIIIlIlIl) _lIIllIlIII.Size = UDim2.new(0x0,_llIIllIlII,0x0,_llIIllIlII) _lIlIllIIIl.Size = UDim2.new(0x0,_llIIllIlII,0x0,_llIIllIlII) _lllllllIII.Size = UDim2.new(0x0,_llIIllIlII,0x0,_llIIllIlII) _IlIIlIllll.Size = UDim2.new(0x0,_llIIllIlII,0x0,_llIIllIlII) _lllllIlIll.Size = UDim2.new(0x0, _IIllIIIIII, 0x0, _IIllIIIIII) _lIIllIlIII.Position = UDim2.new(0.5,-_llIIllIlII/0x2,0x0,0x0) _lIlIllIIIl.Position = UDim2.new(0.5,-_llIIllIlII/0x2,0x1,-_llIIllIlII) _lllllllIII.Position = UDim2.new(0x0,0x0,0.5,-_llIIllIlII/0x2) _IlIIlIllll.Position = UDim2.new(0x1,-_llIIllIlII,0.5,-_llIIllIlII/0x2) _lllllIlIll.Position = UDim2.new(0.5, -_IIllIIIIII/0x2, 0.5, -_IIllIIIIII/0x2) end
+ _llIIlllIll() _IlllIIIlll:GetPropertyChangedSignal("\086\105\101\119\112\111\114\116\083\105\122\101"):Connect(_llIIlllIll) local function _lIlllIIlII(_lIlIllIIll) local _IIlIllIlll = _IlIIlIIllI[_lIlIllIIll] if _IIlIllIlll and _IIlIllIlll.isFlashlight then _lIlIllIIll.InputBegan:Connect( function (input) if not _lllIlIlllI then return end
+ if input.UserInputType == Enum.UserInputType.Touch then if _IllIIlIllI[_lIlIllIIll.Name] then return end
+ _IllIIlIllI[_lIlIllIIll.Name] = input _lllIlllIIl() end
+ end
+ ) _lIlIllIIll.InputEnded:Connect( function (input) if input.UserInputType == Enum.UserInputType.Touch then if _IllIIlIllI[_lIlIllIIll.Name] ~= input then return end
+ _IllIIlIllI[_lIlIllIIll.Name] = nil end
+ end
+ ) _lIlIllIIll.MouseLeave:Connect( function () if _IllIIlIllI[_lIlIllIIll.Name] then _IllIIlIllI[_lIlIllIIll.Name] = nil end
+ end
+ ) return end
+ _lIlIllIIll.InputBegan:Connect( function (input) if not _lllIlIlllI then return end
+ if input.UserInputType == Enum.UserInputType.Touch then if _IllIIlIllI[_lIlIllIIll.Name] then return end
+ _IllIIlIllI[_lIlIllIIll.Name] = input _IIlIllIlll.arrow.Image = _lllllllIIl if _IIlIllIlll.axis == "\088" then _IllIlIIlII.X += _IIlIllIlll.value else _IllIlIIlII.Z += _IIlIllIlll.value end
+ end
+ end
+ ) _lIlIllIIll.InputEnded:Connect( function (input) if input.UserInputType == Enum.UserInputType.Touch then if _IllIIlIllI[_lIlIllIIll.Name] ~= input then return end
+ _IllIIlIllI[_lIlIllIIll.Name] = nil _IIlIllIlll.arrow.Image = _IIIIlIllII if _IIlIllIlll.axis == "\088" then _IllIlIIlII.X -= _IIlIllIlll.value else _IllIlIIlII.Z -= _IIlIllIlll.value end
+ end
+ end
+ ) _lIlIllIIll.MouseLeave:Connect( function () if _IllIIlIllI[_lIlIllIIll.Name] then if _IIlIllIlll.axis == "\088" then _IllIlIIlII.X -= _IIlIllIlll.value else _IllIlIIlII.Z -= _IIlIllIlll.value end
+ _IllIIlIllI[_lIlIllIIll.Name] = nil _IIlIllIlll.arrow.Image = _IIIIlIllII end
+ end
+ ) end
+ _lIlllIIlII(_lIIllIlIII) _lIlllIIlII(_lIlIllIIIl) _lIlllIIlII(_lllllllIII) _lIlllIIlII(_IlIIlIllll) _lIlllIIlII(_lllllIlIll) local function _llIIIlllII(_lIIIIlIlIl) local _lIlllIllIl = Region3.new( _lIIIIlIlIl - Vector3.new(_IlIlllIllI, _IlIlllIllI, _IlIlllIllI), _lIIIIlIlIl + Vector3.new(_IlIlllIllI, _IlIlllIllI, _IlIlllIllI) ) local _lIlIIIIlIl = workspace:FindPartsInRegion3(_lIlllIllIl, _lIlIIIllII.Character, 0x64) local _llIlllllII = Vector3.zero local _IlIlIllIII = 0x0 local _llIlIlllII = false for _, part in ipairs(_lIlIIIIlIl) do if part.CanCollide then local _lIIIllIIII = Vector3.new( math.clamp(_lIIIIlIlIl.X, part.Position.X - part.Size.X/0x2, part.Position.X + part.Size.X/0x2), math.clamp(_lIIIIlIlIl.Y, part.Position.Y - part.Size.Y/0x2, part.Position.Y + part.Size.Y/0x2), math.clamp(_lIIIIlIlIl.Z, part.Position.Z - part.Size.Z/0x2, part.Position.Z + part.Size.Z/0x2) ) local _lIIIIIIIlI = (_lIIIIlIlIl - _lIIIllIIII).Magnitude if _lIIIIIIIlI < _IlIlllIllI then _llIlIlllII = true local _IllIIlIIlI = (_lIIIIlIlIl - _lIIIllIIII).Unit if _IllIIlIIlI.Magnitude == 0x0 then _IllIIlIIlI = Vector3.new(0x0, 0x1, 0x0) end
+ local _IllIIIIlll = _IlIlllIllI - _lIIIIIIIlI if _IllIIIIlll > _IlIlIllIII then _IlIlIllIII = _IllIIIIlll _llIlllllII = _IllIIlIIlI end
+ end
+ end
+ end
+ return _llIlIlllII, _llIlllllII, _IlIlIllIII end
+ local function _llIlIllllI(_lIIIIlIlIl, _IllIIlIIlI, _IllIIIIlll) return _lIIIIlIlIl + _IllIIlIIlI * (_IllIIIIlll + _llIIllIIII) end
+ local function _lIIlIIllIl(_IlIIIIIIIl) local _lIIIIlIlIl = _IlIIIIIIIl for i = 0x1, _lllIlIllll do local _llIlIlllII, _IllIIlIIlI, _IllIIIIlll = _llIIIlllII(_lIIIIlIlIl) if not _llIlIlllII then break end
+ _lIIIIlIlIl = _llIlIllllI(_lIIIIlIlIl, _IllIIlIIlI, _IllIIIIlll) end
+ return _lIIIIlIlIl end
+ local function _lIlIlIIIlI() _lllIlIlllI = true _llIlllllll = Vector3.zero _llIlIlIlll = Vector2.zero _llIlIlIllI = Vector2.zero _IIIlIllIlI = nil for k, _ in pairs(_IllIIlIllI) do _IllIIlIllI[k] = nil end
+ _IllIlIIlII.X = 0x0 _IllIlIIlII.Z = 0x0 pcall( function () StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.TouchControls, false) end
+ ) _IlllIIIlll.CameraType = Enum.CameraType.Scriptable _llIIlllIIl.Enabled = true end
+ local function _lIllIllIIl() _lllIlIlllI = false if _IIIIlIIIlI then _lllIlllIIl() end
+ for k, _ in pairs(_IllIIlIllI) do _IllIIlIllI[k] = nil end
+ _IllIlIIlII.X = 0x0 _IllIlIIlII.Z = 0x0 _IIIlIllIlI = nil pcall( function () StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.TouchControls, true) end
+ ) _IlllIIIlll.CameraType = Enum.CameraType.Custom if _lIlIIIllII.Character and _lIlIIIllII.Character:FindFirstChild("\072\117\109\097\110\111\105\100") then _IlllIIIlll.CameraSubject = _lIlIIIllII.Character.Humanoid end
+ _llIIlllIIl.Enabled = false end
+ _lIlIlIIlIl.MouseButton1Click:Connect( function () if _lllIlIlllI then _lIllIllIIl() else _lIlIlIIIlI() end
+ end
+ ) UserInputService.InputBegan:Connect( function (input, gameProcessed) if not _lllIlIlllI then return end
+ if input.UserInputType ~= Enum.UserInputType.Touch then return end
+ if gameProcessed then return end
+ if _IIIllIIlIl(input.Position) then return end
+ if _IIIlIllIlI == nil then _IIIlIllIlI = input _llllIIllIl = input.Position end
+ end
+ ) UserInputService.InputChanged:Connect( function (input, gameProcessed) if not _lllIlIlllI then return end
+ if input.UserInputType ~= Enum.UserInputType.Touch then return end
+ if input == _IIIlIllIlI then if _llllIIllIl then local _llIIlIlllI = input.Position - _llllIIllIl _llIlIlIlll += Vector2.new(-_llIIlIlllI.Y, -_llIIlIlllI.X) * 0.8 end
+ _llllIIllIl = input.Position end
+ end
+ ) UserInputService.InputEnded:Connect( function (input, gameProcessed) if input.UserInputType ~= Enum.UserInputType.Touch then return end
+ if input == _IIIlIllIlI then _IIIlIllIlI = nil _llllIIllIl = nil end
+ end
+ ) RunService.RenderStepped:Connect( function () if not _lllIlIlllI then return end
+ _llIlIlIllI = _llIlIlIllI:Lerp(_llIlIlIlll, _IllIIlIIll) local _lIllIlIllI = CFrame.new(_IlllIIIlll.CFrame.Position) * CFrame.Angles(0x0, math.rad(_llIlIlIllI.Y), 0x0) * CFrame.Angles(math.rad(_llIlIlIllI.X), 0x0, 0x0) local _lIIIlllIIl = Vector3.new(_IllIlIIlII.X, 0x0, _IllIlIIlII.Z) if _lIIIlllIIl.Magnitude > 0x1 then _lIIIlllIIl = _lIIIlllIIl.Unit end
+ _llIlllllll = _llIlllllll:Lerp(_lIllIlIllI:VectorToWorldSpace(_lIIIlllIIl) * _IIllIIllIl, _IllIIlIIll) local _IlIIIIIIIl = _IlllIIIlll.CFrame.Position + _llIlllllll local _IIlllIIlll = _lIIlIIllIl(_IlIIIIIIIl) _IlllIIIlll.CFrame = CFrame.new(_IIlllIIlll) * CFrame.Angles(0x0, math.rad(_llIlIlIllI.Y), 0x0) * CFrame.Angles(math.rad(_llIlIlIllI.X), 0x0, 0x0) _llllIIIllI() end
+ ) game:GetService("\067\111\114\101\071\117\105").ChildRemoved:Connect( function (child) if child == _IIIllIllIl or child == _llIIlllIIl then _llllllIIII() end
+ end
+ ) end
+ )(...)
